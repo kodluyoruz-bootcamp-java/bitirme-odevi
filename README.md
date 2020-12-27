@@ -7,7 +7,7 @@ Merhaba arkadaşlar, bitirme ödevi olarak **Depo Yönetim Sistemi** yapacağız
 * Spring Boot 
 * Spring Web
 * Jpa
-* H2 Database
+* Postgres/H2/MSSQL/MySql
 * Lombok
 * Ön yüz olarak **React, Angular, Vue.Js, JSF, JSP veya farklı** ön yüz teknolojisi kullanabilirsiniz.
 
@@ -171,10 +171,20 @@ Kullanıcı N adet depo oluşturabilir ve oluşturduğu bu depoların tamamını
     * **End Point** = /warehouseapi/stocks
     * **Kondisyon** = Bu method ile hangi depoda hangi üründen kaç adet var, bu ürünlerin KDV'li, KDV'siz toplam fiyatları ile toplam KDV bilgilerini de gönderiyor olacağız. 
     
+**UserController**
+
+1. Login
+
+    * **Method Name** = login
+    * **HTTP Request Type** = POST
+    * **EndPoint** = /warehouseapi/user/login
+    * **Kondisyon** = Kullanıcının email ve şifresinin kontrolü yapılmalı. Email için validasyon uygulanmalı. Email veya şifre uyumlu değilse kullanıcıya bilgi verilmeli.  
+
+    
     
 # Dikkat edilmesi gereken hususlar #
 
-Kullanacağımız veri tabanı H2 olacaktır.  H2'nun memory özelliği olduğundan uygulamamızı kapatıp açsakta bu bilgilerin local file'de kalmasını sağlayalım. ( Bunun için biraz araştırma yapmanız gerekecek ) 
+Kullanacağımız veri tabanı dilediğiniz bir veritabanı olabilir. 
 
 Kodlarımızı yazarken MVC ( Model / View / Controller ) yapısına dikkat edelim. Data Layer'da sadece Database işlemleri yaparken Business Layer'da gerekiyorsa validasyonlarımızı ve hesaplamalarımızı yapacağız. Servis katmanı asla data katmanındaki objeyi bilmeyecektir. Aynı anda data katmanı da servis katmanındaki objeyi bilmeyerek loose coupling'i gerçekleştireceğiz. Controller katmanında herhangi bir business olmamalı.
 
